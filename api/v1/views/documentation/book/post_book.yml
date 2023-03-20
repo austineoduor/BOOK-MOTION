@@ -1,0 +1,19 @@
+    Create a new Book
+    ---
+    tags:
+      - Books
+    parameters:
+      - name: book_id
+        in: body
+        required: true
+        requires:
+          - title
+        properties:
+          name:
+            type: string
+
+    responses:
+      400:
+        description: Not a JSON
+      201:
+        description: request executed successfully
