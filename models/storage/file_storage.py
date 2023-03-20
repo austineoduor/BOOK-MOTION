@@ -15,7 +15,7 @@ class FileStorage:
     __file_path = 'bookmotion.json'
     __objects = {}
     class_dict = {"BookMotionBase":BookMotionBase, "User":User,
-                    "Book":Book, "Review":Review}
+                    "Book":Book, "Recommended":Recommended}
 
     def all(self, cls=None):
         """returns a dictionary
