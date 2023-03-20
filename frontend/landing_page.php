@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK-MOTION LANDING PAGE</title>
+    <link rel="icon" type="image/png" href="images/book.png">
+    <link rel="stylesheet" type="text/css" href="styles/landing_page.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav class="navAlign">
+                <div class="logo_home">
+                    <img class="nav_img" src="images/book.png" alt="logo" onerror="this.style.display = 'none'">
+                <div class="home">
+                    <a href="index.php"><i class="fa fa-home"></i>Home</a>
+                </div>
+                </div>
+                <div class="navList">
+                    <ul>
+                        <li><a href="signin-signup.php"l><i class="fa fa-user-circle"></i>Login</a></li>
+                        <li><a href="signin-signup.php"><i class="fa fa-sign-in"></i>Sign up</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+    </header>
+    <section class="about">
+        <div class="container">
+            <!-- <header class="hd">
+                <h1 class="ablih1">About Librarify</h1>
+            </header> -->
+            <div class="abli">
+                <p><b>This project is all about making a libary that is avaliable to everyone any where in the World</b></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="documentaryHeader">
+            <h2>Documentary books</h2>
+        </div>
+        <div class="documentaryAlign">
+            <div class="documentaryImg">
+                <img src="images/docu.jpg" alt="documetary" width="73%" height="80%" onerror="this.style.display = 'none'" />
+            </div>
+            <div class="documentaryTxt">
+                <p>A documentary is a film or television program that informs or educates its viewers about a particular topic or issue. Documentaries can be entertaining, informative, and inspiring. They offer a unique and powerful form of storytelling that can capture the viewer’s attention and provoke thought and discussion. Documentaries can explore any subject matter, from historical events to contemporary issues to the human experience.</p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="edu">
+            <h2>Educative books</h2>
+        </div>
+        <div class="bookstxt">
+            <div class="edu_img">
+                <img src="images/text.jpg" alt="text" width="73%" height="80%" onerror="this.style.display = 'none'"  />
+            </div>
+            <div class="contenttxt">
+                <p>Books are a great way for students to learn. They provide information and knowledge that can be used in the real world. In addition, books can help students develop critical thinking and problem-solving skills.
+                </p>
+            </div>
+        </div>                
+    </section>
+    <section class="container">
+        <div    class="lif">
+            <h2>Life style books</h2>
+        </div>
+        <div class="lif_content">
+            <div class="lif_img">
+                <img src="images/life.jpg" alt="life" width="73%" height="60%" onerror="this.style.display = 'none'"/>
+            </div>
+            <div class="lifetxt">           
+                <p>Life is very precious and living a healthy life in much more precious than that because without health, life is life food without taste. Health provides you the opportunity to make your life more joyful and able you to perform every activity you desire. When you lead a healthy lifestyle your body remains healthy, your skin stays glowing and refreshed and most importantly many kinds of diseases stay away from you so that you can enjoy your life to its full extent.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="new">
+            <h2>Magazines/News_paper Archives</h2>
+        </div>
+        <div>
+           <div class="mag_content">
+                <div class="mag_img">
+                    <img src="images/new.jpg" alt="mag" width="70%" height="75%" onerror="this.style.display = 'none'"/>
+                </div>
+                <div class="newtxt">
+                    <p>Newspaper is quite a powerful tool that circulates information to people. It is one of the greatest means of communication between people and the world. In addition, they are also a great medium of knowledge. We get our daily dose of news from newspapers early in the morning. It is quite a reliable source which gives us information only after thoroughly investigating the information.
+                    </p>
+                </div>
+            </div>
+            <div class="new_content">
+                <div class="new_img">
+                    <img src="images/mag.jpg" alt="mag" width="70.5%" height="70%" onerror="this.style.display = 'none'" />
+                </div>
+                <div class="magtxt">
+                    <p>Magazines offer the feeling of holding something in your hand and reading it which I believe is important to society. The functions of a magazine such as longer stories are important because it allows the reader to obtain a full story instead of a few sentences that may have been printed in a newspaper.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+ <footer>
+    <section class="footer_container">
+        <div class="container">
+            <div class="fut">
+                <h1 class="fut_h1">&copy;2022 All Rights Reserverd</h1>
+                <div class="footerIcons">
+                    <a href="#"><i class="fa fa-twitter"></i> Librarify</a>
+                    <a href="#"><i class="fa fa-instagram"></i> Librarify</a>
+                    <a href="#"><i class="fa fa-facebook"></i> Librarify</a>
+                </div>
+            </div>
+        </div>
+    </section>
+ </footer>   
+</html>

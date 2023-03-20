@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*box-sizing: content-box;*/
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+}
+
+body {
+    text-align:justify;
+    background-color: #f5ebe0;
+    margin: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.container {
+    width: 98%;
+    margin: auto;
+}
+
+.logo_home {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home :hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+header {
+    height: 40px;
+    background-color: rgb(204, 198, 198);
+}
+
+.nav_img{
+    width: 30px;
+    height: 30px;
+    position: left;
+} 
+
+.navAlign {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navList ul {
+    padding: 0;
+    
+
+}
+
+.navList ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 15px;
+    align-content: flex-end;
+}
+
+.navList ul li :hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.navList ul li :active {
+    color: lightcoral;
+    cursor: pointer;
+}
+
+.navList ul li:last-child {
+    margin-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    background-color: grey;
+    padding: 40px 0;
+    height: 40px;
+	bottom: 0;
+	/*position: fixed;*/
+	margin: auto;
+    width: 100%;
+}
+
+.footer_container {
+    margin: auto;
+	height: 50px;
+	bottom: 0;
+}
+
+.footerIcons a {
+    margin-right: 10px;
+    color: rgb(63, 63, 122);
+}
+.fut_h1 {
+    color: rgb(20, 3, 66);
+    text-align: center;
+    font-size: 19px;
+}
+.fut{
+	height:40px;
+}
+
+.footerIcons a:last-child {
+    margin-right: 0;
+}

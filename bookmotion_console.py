@@ -14,6 +14,7 @@ class BookMotionCommand(cmd.Cmd):
     """
     Entry to command interpreter
     """
+    intro = 'Welcome to the BookMotion shell.   Type help or ? to list commands.\n'
     prompt = "(BookMotion) "
     classes = {"BookMotionBase","User","Book","Recommended"}
 
@@ -29,6 +30,12 @@ class BookMotionCommand(cmd.Cmd):
     def emptyline(self):
         """Overwrite default behavior to repeat last cmd"""
         pass
+
+    def do_reset(self, line):
+        '''Clear the screen and return turtle to center:  RESET'''
+        reset()
+
+
 
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it
@@ -61,7 +68,7 @@ class BookMotionCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Print string representation: name and id
-        Example: show LibrarifyBase 1234-1234-1234
+        Example: show BookMotionBase d23d2e1e-4ac2-45d2-b854-9cf9d07d9e4d
         """
         if len(line) == 0:
             print("** class name missing **")
@@ -82,7 +89,7 @@ class BookMotionCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Destroy instance specified by user; Save changes to JSON file
-        Example: destroy LibrarifyBase 1234-1234-1234
+        Example: destroy BookMotionBase d23d2e1e-4ac2-45d2-b854-9cf9d07d9e4d
         """
         if len(line) == 0:
             print("** class name missing **")
@@ -104,7 +111,7 @@ class BookMotionCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Print all objects or all objects of specified class
-        Example: all LibrarifyBase or all
+        Example: all BookMotionBase or all
         """
         args = parse(line)
         obj_list = []

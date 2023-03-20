@@ -1,0 +1,240 @@
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    text-align:justify ;
+    background-color: #f5ebe0;
+    margin: auto;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+.about {
+    background-image: url(../images/back.jpg);
+    background-size: cover;
+    display: block;
+    margin: 2px auto;
+    border: 1px;
+    padding: 50px;
+    text-align: center;
+}
+.hd {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.abli {
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+    color: rgb(136, 39, 87);
+}
+
+.ablih1 {
+    text-align: center;
+    font-family:'Courier New', Courier;
+    font-size: 38px;
+    color: blueviolet;
+	width: 80%;
+	margin:auto;
+}
+
+h2 {
+    color: blueviolet;
+    text-decoration: underline;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 30px;
+}
+
+b {
+	background-color: rgba(0, 0, 254, 0.3);
+    font-size: 30px;
+    color: rgb(218, 235, 122);
+}
+
+header {
+    padding: 20px;
+    background-color: #e6e6e6;
+    height: 50%;
+}
+
+.logo_home {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home :hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.docmentry {
+    margin: 0;
+    padding: 0;
+}
+
+.documentaryHeader {
+    display: inline-flex;
+    margin: 2px auto;
+}
+
+.navAlign {
+	margin: auto;
+	width: 100%;
+}
+
+.documentaryAlign, .navAlign {
+    display: flex;
+    justify-content: space-between;
+}
+
+.documentaryImg {
+    width: 60%;
+	margin: auto;
+}
+
+.documentaryTxt {
+    width: 60%;
+	margin: auto;
+}
+
+.edu_img {
+    width: 60%;
+    margin: auto;
+}
+
+/*.bar {
+    height: 1px;
+    background-color: #000;
+    width: 100px;
+}*/
+
+.navList ul {
+    padding: 0;
+    
+
+}
+.nav_img{
+    width: 30px;
+    height: 30px;
+    position: left;
+} 
+
+.navList ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 15px;
+    align-content: flex-end;
+}
+
+.navList ul li :hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.navList ul li :active {
+    color: lightcoral;
+    cursor: pointer;
+}
+
+.navList ul li:last-child {
+    margin-right: 0;
+}
+
+.bookstxt {
+    display: flex;
+    justify-content: space-between;
+}
+.contenttxt {
+    width: 60%;
+}
+
+.lif_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lif_img {
+    width: 70%;
+    margin: auto;
+}
+
+.lifetxt{
+    width: 60%;
+    text-size-adjust:inherit ;
+    flex-basis: 70%;
+}
+.mag_content {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    height: 60%;
+}
+
+.mag_img {
+    width: 65%;
+    margin: auto;
+    height: 70%;
+}
+
+.new_content {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    height: 70%;
+}
+
+.new_img {
+    width: 75%;
+    margin: auto;
+}
+
+.magtxt {
+    width: 70%;
+	margin: auto;
+}
+.newtxt {
+    width: 60%;
+    margin: auto;
+}
+
+.footer_container {
+    margin: auto;
+	height: 70px;
+	bottom: 5px;
+}
+
+footer {
+    background-color: grey;
+    padding: 40px 0;
+    height: 120px;
+}
+
+.footerIcons a {
+    margin-right: 10px;
+    color: rgb(63, 63, 122);
+}
+
+.fut{
+	height:40px;
+}
+.fut_h1 {
+    color: rgb(20, 3, 66);
+    text-align: center;
+}
+
+.footerIcons a:last-child {
+    margin-right: 0;
+}

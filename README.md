@@ -57,23 +57,18 @@ $ git clone https://github.com/austineoduor/BOOK-MOTION.git
 ###### Example
 
 ```
-➜  LIBRARIFY git:(feature) ✗ ./librarify_console.py
-(librarify) create LibrarifyBase
-bb4f4b81-7757-460b-9263-743c9ea6fef6
-(librarify) show LibrarifyBase bb4f4b81-7757-460b-9263-743c9ea6fef6
-[LibrarifyBase] (bb4f4b81-7757-460b-9263-743c9ea6fef6) {'updated_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492139), 'id': 'bb4f4b81-7757-460b-9263-743c9ea6fef6', 'created_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492106)}
-(librarify) all LibrarifyBase
-["[LibrarifyBase] (bb4f4b81-7757-460b-9263-743c9ea6fef6) {'updated_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492139), 'id': 'bb4f4b81-7757-460b-9263-743c9ea6fef6', 'created_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492106)}"]
-(librarify) update LibrarifyBase bb4f4b81-7757-460b-9263-743c9ea6fef6 name Sodiq
-['LibrarifyBase', 'bb4f4b81-7757-460b-9263-743c9ea6fef6', 'name', 'Sodiq']
-(librarify) all LibrarifyBase
-["[LibrarifyBase] (bb4f4b81-7757-460b-9263-743c9ea6fef6) {'updated_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492139), 'id': 'bb4f4b81-7757-460b-9263-743c9ea6fef6', 'name': 'Sodiq', 'created_at': datetime.datetime(2022, 11, 13, 17, 7, 45, 492106)}"]
-(librarify) destroy LibrarifyBase bb4f4b81-7757-460b-9263-743c9ea6fef6
-(librarify) all LibrarifyBase
-[]
-(librarify) show LibrarifyBase
-** instance id missing **
-(librarify)
+vagrant@ubuntu-focal:~/BOOK-MOTION$ ./bookmotion_console.py
+(BookMotion) create BookMotionBase
+8c638c17-28f3-4de1-bda7-377f24c87a7a
+(BookMotion) show BookMotionBase 8c638c17-28f3-4de1-bda7-377f24c87a7a
+[BookMotionBase] (8c638c17-28f3-4de1-bda7-377f24c87a7a) {'id': '8c638c17-28f3-4de1-bda7-377f24c87a7a', 'created_at': datetime.datetime(2023, 3, 20, 19, 9, 16, 49799), 'updated_at': datetime.datetime(2023, 3, 20, 19, 9, 16, 49904)}
+(BookMotion)
+(BookMotion)
+(BookMotion) all BookMotionBase
+["[BookMotionBase] (be7f7dea-f7cb-49e0-bac0-88a40d655054) {'id': 'be7f7dea-f7cb-49e0-bac0-88a40d655054', 'created_at': datetime.datetime(2023, 3, 20, 19, 0, 37, 131434), 'updated_at': datetime.datetime(2023, 3, 20, 19, 0, 37, 131505)}", "[BookMotionBase] (8c638c17-28f3-4de1-bda7-377f24c87a7a) {'id': '8c638c17-28f3-4de1-bda7-377f24c87a7a', 'created_at': datetime.datetime(2023, 3, 20, 19, 9, 16, 49799), 'updated_at': datetime.datetime(2023, 3, 20, 19, 9, 16, 49904)}"]
+(BookMotion)
+(BookMotion)
+
 
 ```
 
