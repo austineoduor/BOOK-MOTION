@@ -30,13 +30,7 @@ class BookMotionCommand(cmd.Cmd):
     def emptyline(self):
         """Overwrite default behavior to repeat last cmd"""
         pass
-
-    def do_reset(self, line):
-        '''Clear the screen and return turtle to center:  RESET'''
-        reset()
-
-
-
+    
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it
         Exceptions:

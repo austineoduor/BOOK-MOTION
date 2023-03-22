@@ -19,18 +19,12 @@ class Book(BookMotionBase, Base):
         title = Column(String(128), nullable=True)
         category = Column(String(128))
         publication_year = Column(Integer, nullable=True)
-        image_url = Column(String(128), nullable=True)
-        book_api  = Column(String(128), nullable=True)
-        publisher = Column(String(128), nullable=True)
 
     else:
         author=""
         title=""
         category=""
         publication_year=0
-        image_url=""
-        book_api=""
-        publisher=""
 
     def recommended(self):
         """getter attribute returns the list of Recommended books"""
