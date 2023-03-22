@@ -14,7 +14,7 @@ from os import getenv
 class Book(BookMotionBase, Base):
     """Defines attributes for user creation"""
     __tablename__ = "books"
-    if getenv("BOOK_TYPE_STORAGE") == "db":
+    if getenv("STORAGE") == "db":
         author = Column(String(128), nullable=True)
         title = Column(String(128), nullable=True)
         category = Column(String(128))

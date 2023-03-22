@@ -13,7 +13,7 @@ class Recommended(BookMotionBase, Base):
         Implementation for the Review.
     '''
     __tablename__ = "recommended"
-    if getenv("BOOK_TYPE_STORAGE") == "db":
+    if getenv("STORAGE") == "db":
         text = Column(String(1024), nullable=True)
         book_id = Column(String(60), ForeignKey("books.id"), nullable=True)
         user_id = Column(String(60), ForeignKey("users.id"), nullable=True)

@@ -12,7 +12,7 @@ from models.book import Book
 from models.book_recommended import Recommended
 
 
-if getenv("BOOK_TYPE_STORAGE") == "db":
+if getenv("STORAGE") == "db":
     storage = DBStorage()
 else:
     storage = FileStorage()
