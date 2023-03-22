@@ -21,26 +21,26 @@ def get_users():
     return jsonify(list_users)
 
 
-@app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/users/<email>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])
-def get_user(user_id):
+def get_user(email):
     """ Retrieves an user """
-    user = storage.get(User, user_id)
+    user = storage.get(User, email)
     if not user:
         abort(404)
 
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users/<user_id>', methods=['DELETE'],
+@app_views.route('/users/email', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
-def delete_user(user_id):
+def delete_user(email):
     """
     Deletes a user Object
     """
 
-    user = storage.get(User, user_id)
+    user = storage.get(User, email)
 
     if not user:
         abort(404)
@@ -57,37 +57,39 @@ def post_user():
     """
     Creates a user
     """
-    if not request.get_json():
-        abort(400, description="Not a JSON")
-
-    if 'email' not in request.get_json():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    if not email:
         abort(400, description="Missing email")
-    if 'password' not in request.get_json():
+    if not password:
         abort(400, description="Missing password")
 
-    data = request.get_json()
+    data = {}
+    data['email'] = email
+    data['password'] = password
     instance = User(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/users/<email>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/user/put_user.yml', methods=['PUT'])
-def put_user(user_id):
+def put_user(email):
     """
     Updates a user
     """
-    user = storage.get(User, user_id)
+    user = storage.get(User, email)
 
     if not user:
         abort(404)
 
-    if not request.get_json():
-        abort(400, description="Not a JSON")
-
+    email = request.form.get('email')
+    password = request.form.get('password')
+    
     ignore = ['id', 'email', 'created_at', 'updated_at']
 
-    data = request.get_json()
+    data = {}
+    data['email'] = email
     for key, value in data.items():
         if key not in ignore:
             setattr(user, key, value)
