@@ -57,15 +57,16 @@ def post_user():
     """
     Creates a user
     """
-    if not request.get_json():
-        abort(400, description="Not a JSON")
-
-    if 'email' not in request.get_json():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    if not email:
         abort(400, description="Missing email")
-    if 'password' not in request.get_json():
+    if not password:
         abort(400, description="Missing password")
 
-    data = request.get_json()
+    data = {}
+    data['email'] = email
+    data['password'] = password
     instance = User(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
