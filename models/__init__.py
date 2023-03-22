@@ -13,8 +13,8 @@ from models.book_recommended import Recommended
 
 
 if getenv("BOOK_TYPE_STORAGE") == "db":
-    storage = DBStorage()
+    Storage = DBStorage()
 else:
-    storage = FileStorage()
+    Storage = FileStorage()
 
 storage.reload()

@@ -21,26 +21,26 @@ def get_users():
     return jsonify(list_users)
 
 
-@app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/users/<email>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])
-def get_user(user_id):
+def get_user(email):
     """ Retrieves an user """
-    user = storage.get(User, user_id)
+    user = storage.get(User, email)
     if not user:
         abort(404)
 
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users/<user_id>', methods=['DELETE'],
+@app_views.route('/users/email', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
-def delete_user(user_id):
+def delete_user(email):
     """
     Deletes a user Object
     """
 
-    user = storage.get(User, user_id)
+    user = storage.get(User, email)
 
     if not user:
         abort(404)
