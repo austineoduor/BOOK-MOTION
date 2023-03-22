@@ -9,7 +9,7 @@ from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
 
-@app_views.route('/books/<book_id>/reviews', methods=['GET'],
+@app_views.route('/books/<book_id>/recommend', methods=['GET'],
                  strict_slashes=False)
 @swag_from('documentation/books/get_books.yml', methods=['GET'])
 def get_books(book_id):
@@ -26,7 +26,7 @@ def get_books(book_id):
     return jsonify(reviews)
 
 
-@app_views.route('/reviews/<review_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/recommend/<recommend_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/reviews/get_review.yml', methods=['GET'])
 def get_review(review_id):
     """
@@ -39,7 +39,7 @@ def get_review(review_id):
     return jsonify(recommend.to_dict())
 
 
-@app_views.route('/reviews/<review_id>', methods=['DELETE'],
+@app_views.route('/recommend/<recommend_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/reviews/delete_reviews.yml', methods=['DELETE'])
 def delete_review(recommend_id):
@@ -58,7 +58,7 @@ def delete_review(recommend_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/books/<book_id>/reviews', methods=['POST'],
+@app_views.route('/books/<book_id>/recommend', methods=['POST'],
                  strict_slashes=False)
 @swag_from('documentation/reviews/post_reviews.yml', methods=['POST'])
 def post_review(book_id):
@@ -91,7 +91,7 @@ def post_review(book_id):
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_views.route('/reviews/<review_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/recommend/<recommend_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/reviews/put_reviews.yml', methods=['PUT'])
 def put_review(recommend_id):
     """

@@ -32,7 +32,7 @@ def get_user(email):
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users/email', methods=['DELETE'],
+@app_views.route('/users/<email>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
 def delete_user(email):
