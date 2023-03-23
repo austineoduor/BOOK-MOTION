@@ -5,7 +5,7 @@ from models.book_recommended import Recommended
 from models.user import User
 from models import storage
 from api.v1.views import app_views
-from flask import jsonify
+from flask import jsonify, abort
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
