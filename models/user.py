@@ -12,13 +12,15 @@ from sqlalchemy.orm import relationship
 class User(BookMotionBase, Base):
     """Defines attributes for user creation"""
     __tablename__ = "users"
-    if getenv("BOOK_TYPE_STORAGE") == "db":
-        email = Column(String(128), nullable=True)
-        password =  Column(String(128), nullable=True)
+    if getenv("STORAGE") == "db":
+        username = Column(String(128), nullable=False)
+        email = Column(String(128), nullable=False)
+        password =  Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
         last_name =  Column(String(128), nullable=True)
     else:
         email = ""
+        username = ""
         password = ""
         first_name = ""
         last_name = ""
