@@ -3,12 +3,15 @@
 Entry to command interpreter
 """
 import cmd
-from models import storage
+from models.storage.db_storage import DBStorage
 from models.bookmotion_base import BookMotionBase
 from models.user import User
 from models.book import Book
 from models.book_recommended import Recommended
 from shlex import split
+
+
+storage = DBStorage()
 
 class BookMotionCommand(cmd.Cmd):
     """

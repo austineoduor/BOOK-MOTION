@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 import uuid
-from datetime import datetime
-import models
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime
 
+from datetime import datetime
+from sqlalchemy import Column, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+   
+   
 Base = declarative_base()
         
 class BookMotionBase:
@@ -13,7 +14,6 @@ class BookMotionBase:
         __init__(self, *args, **kwargs)
         __str__(self)
         __save(self)
-        __repr__(self)
         to_dict(self)
     """
 
@@ -64,8 +64,10 @@ class BookMotionBase:
         save to serialized file
         """
         self.updated_at = datetime.now()
-        models.storage.new(self)
-        models.storage.save()
+        '''models.storage.new(self)
+        '''
+        from models.storage.db_storage import DBStorage as storage
+        storage.save()
 
     def to_dict(self):
         """

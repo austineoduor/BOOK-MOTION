@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 """ Flask Application """
-from models import storage
+from models.storage.db_storage import DBStorage
 from api.v1.views import app_views
 from os import environ
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flasgger import Swagger
-from flasgger.utils import swag_from
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
+
+storage = DBStorage()
 
 @app.teardown_appcontext
 def close_db(error):
@@ -36,6 +37,12 @@ def not_authorized(error) -> str:
     """ Not authorized handler
     """
     return jsonify({"error": "Unauthorized"}), 401
+
+@app.errorhandler(409)
+def conflicted(error) -> str:
+    """ Not conflict handler
+    """
+    return jsonify({"conflict": "email exist with other user"}), 409
 
 
 @app.errorhandler(403)

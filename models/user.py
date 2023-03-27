@@ -2,26 +2,31 @@
 """
 User creation class
 """
-from os import getenv
 from models.bookmotion_base import BookMotionBase, Base
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String
+
 
 class User(BookMotionBase, Base):
-    """Defines attributes for user creation"""
+    """Defines attributes for user creation
+    """
     __tablename__ = "users"
-    if getenv("STORAGE") == "db":
-        username = Column(String(128), nullable=False)
-        email = Column(String(128), nullable=False)
-        password =  Column(String(128), nullable=False)
-        first_name = Column(String(128), nullable=True)
-        last_name =  Column(String(128), nullable=True)
-    else:
+    username = Column(String(128), nullable=False)
+    email = Column(String(128), nullable=False)
+    password =  Column(String(128), nullable=False)
+    first_name = Column(String(128), nullable=True)
+    last_name =  Column(String(128), nullable=True)
+    
+    def __str__(self):
+        """
+        Return string representation of the model
+        """
+        return ("[{}] ({}) {}".
+                format(self.__class__.__name__, self.id, self.__dict__))
+        
+    '''else:
         email = ""
         username = ""
         password = ""
         first_name = ""
         last_name = ""
-
+    '''

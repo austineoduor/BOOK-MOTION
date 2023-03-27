@@ -3,10 +3,12 @@
 from models.book import Book
 from models.book_recommended import Recommended
 from models.user import User
-from models import storage
+from models.storage.db_storage import DBStorage
 from api.v1.views import app_views
 from flask import jsonify, abort
 
+
+storage = DBStorage()
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status():
@@ -17,7 +19,7 @@ def status():
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def number_objects():
     """ Retrieves the number of each objects by type """
-    classes = [Book, Recommended, User]
+    classes = ['Book', 'Recommended', 'User']
     names = ["books", "recommended", "users"]
 
     num_objs = {}

@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(../static/images/background_img.jpg);
+    background-image: url(../images/background_img.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -57,5 +57,5 @@ h1 {
 }
 
 .header {
-    font-family: 'Rubik Spray Paint', cursive;
+    font-family: 'Poppins', sans-serif;
 }

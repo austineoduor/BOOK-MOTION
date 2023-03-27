@@ -1,7 +1,7 @@
 retrieves a specific user.
 ---
 tags:
-  - Users
+  - User
 parameters:
   - name: user_id
     in: path

@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Users """
 from models.user import User
-from models import storage
+from models.storage.db_storage import DBStorage
 from api.v1.views import app_views
-from flask import abort, jsonify, make_response, request, render_template, url_for
+from flask import abort, jsonify, make_response, request, render_template, json
 from flasgger.utils import swag_from
 
+
+storage = DBStorage()
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/all_users.yml')
@@ -24,15 +26,16 @@ def get_users():
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])
 def get_user(user_id):
-    """ Retrieves an user """
-    user = storage.get(User, user_id)
+    """ Retrieves one user by id """
+    _id = str(user_id)
+    user = storage.get('User', _id)
     if not user:
         abort(404)
 
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users/<user_id>', methods=['DELETE'],
+@app_views.route('/users/<string:user_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
 def delete_user(user_id):
@@ -40,7 +43,7 @@ def delete_user(user_id):
     Deletes a user Object
     """
 
-    user = storage.get(User, user_id)
+    user = storage.get('User', user_id)
 
     if not user:
         abort(404)
@@ -51,12 +54,12 @@ def delete_user(user_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/signin', strict_slashes=False)
-def signupclear():
+@app_views.route('/users/1c488868-c6e3-435f-95ff-43d4ba05d73d/signin', strict_slashes=False)
+def user_data():
     return render_template('signin-signup.html')
 
 
-@app_views.route('/signin', methods=['POST'], strict_slashes=False)
+@app_views.route('/users', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/user/post_user.yml', methods=['POST'])
 def post_user():
     """
@@ -71,19 +74,18 @@ def post_user():
         abort(400, description="Missing email")
     if not password:
         abort(400, description="Missing password")
-    all_users = storage.all(User).values()
+    all_users = list(storage.all(User).values())
     if all_users:
-        reg_email = all_users.email
-        if reg_email == email:
-            return jsonify({"message": 'email exists' })
-    else:
-        data = {}
-        data['username'] = username
-        data['email'] = email
-        data['password'] = password
-        instance = User(**data)
-        instance.save()
-        return make_response(jsonify(instance.to_dict()), 201)
+        for users in all_users:
+            if users.email == email:
+                return abort(409)
+    data = {}
+    data['username'] = username
+    data['email'] = email
+    data['password'] = password
+    instance = User(**data)
+    storage.save(instance)
+    return render_template('signin-signup.html'), 2001
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
@@ -92,7 +94,7 @@ def put_user(user_id):
     """
     Updates a user
     """
-    user = storage.get(User, user_id)
+    user = storage.get('User', user_id)
 
     if not user:
         abort(404)

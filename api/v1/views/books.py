@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ objects that handles all default RestFul API actions for Books"""
 from models.book import Book
-from models import storage
+from models.storage.db_storage import DBStorage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
+
+storage = DBStorage()
 
 @app_views.route('/books', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/book/all_books.yml')
