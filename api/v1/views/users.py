@@ -35,7 +35,7 @@ def get_user(user_id):
     return jsonify(user.to_dict())
 
 
-@app_views.route('/users/<string:user_id>', methods=['DELETE'],
+@app_views.route('/users/<user_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
 def delete_user(user_id):
@@ -49,14 +49,9 @@ def delete_user(user_id):
         abort(404)
 
     storage.delete(user)
-    storage.save()
+    storage.save(None)
 
     return make_response(jsonify({}), 200)
-
-
-@app_views.route('/users/1c488868-c6e3-435f-95ff-43d4ba05d73d/signin', strict_slashes=False)
-def user_data():
-    return render_template('signin-signup.html')
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
@@ -85,7 +80,7 @@ def post_user():
     data['password'] = password
     instance = User(**data)
     storage.save(instance)
-    return render_template('signin-signup.html'), 2001
+    return make_response(instance.to_dict()), 2001
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
@@ -95,14 +90,21 @@ def put_user(user_id):
     Updates a user
     """
     user = storage.get('User', user_id)
-
     if not user:
         abort(404)
 
-    data = request.get_json()    
-    ignore = ['id', 'email', 'created_at', 'updated_at']
+    email = request.form.get('email')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+
+    data = {}
+    print(user)
+    if user.email == email:
+        data['first_name'] = first_name
+        data['last_name'] = last_name
+    else:
+        return abort(404)
     for key, value in data.items():
-        if key not in ignore:
-            setattr(user, key, value)
-    storage.save()
+        setattr(user, key, value)
+        storage.save(user)
     return make_response(jsonify(user.to_dict()), 200)

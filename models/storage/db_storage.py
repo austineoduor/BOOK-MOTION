@@ -57,7 +57,7 @@ class DBStorage:
         self._session.add(obj)
     '''
 
-    def save(self, obj):
+    def save(self, obj=None) -> None:
         """save changes
         """
         if obj:
@@ -66,13 +66,13 @@ class DBStorage:
         else:
             self._session.commit()
 
-    def delete(self, obj=None):
+    def delete(self, obj=None) ->None:
         """delete an element in the table
         """
         if obj:
-            self.session.delete(obj)
+            self._session.delete(obj)
 
-    def reload(self):
+    def reload(self) -> None:
         """configuration
         """
         Base.metadata.create_all(self.__engine)
@@ -80,7 +80,7 @@ class DBStorage:
         Session = scoped_session(sec)
         self._session = Session()
 
-    def close(self):
+    def close(self) -> None:
         """ calls remove()
         """
         self._session.close()
@@ -100,7 +100,7 @@ class DBStorage:
                 if i.id ==_id:
                     return i
 
-    def count(self, cls: str = None) -> str:
+    def count(self, cls: str = None) -> dict:
         """
         Returns the number of objects in storage matching the given class name.
         If no name is passed, returns the count of all objects in storage.
