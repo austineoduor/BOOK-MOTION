@@ -2,4 +2,4 @@
 *#
 *~
 __pycache__/
-test.*
+test_[0-9].py
