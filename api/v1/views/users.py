@@ -80,7 +80,7 @@ def post_user():
     data['password'] = password
     instance = User(**data)
     storage.save(instance)
-    return make_response(instance.to_dict()), 2001
+    return make_response(instance.to_dict()), 201
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
