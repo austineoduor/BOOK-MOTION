@@ -44,7 +44,6 @@ def conflicted(error) -> str:
     """
     return jsonify({"conflict": "email exist with other user"}), 409
 
-
 @app.errorhandler(403)
 def page_forbidden(error) -> str:
     """ Forbidden handler

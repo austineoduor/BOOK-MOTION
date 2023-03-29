@@ -59,15 +59,31 @@ def post_book():
     """
     Creates a book
     """
-    if not request.get_json():
-        abort(400, description="Not a JSON")
+    title = request.form.get('title')
+    author = request.form.get('author')
+    category = request.form.get('category')
+    published = request.form.get('published')
 
-    if 'title' not in request.get_json():
-        abort(400, description="Missing title")
+    data = {}
+    if not title and not isinstance(title, str):
+        abort(406, description="Missing title")
+    else:
+        data['title'] = title
+    if not author and not isinstance(author, str):
+        abort(406, description="Missing author")
+    else:
+        data['author'] = author
+    if not category and not isinstance(category, str):
+        abort(406, description="Missing category")
+    else:
+        data['category'] = category
+    if not published and not isinstance(published, int):
+        abort(406, description="Missing publishe year or not integer")
+    else:
+        data['published'] = published
 
-    data = request.get_json()
     instance = Book(**data)
-    instance.save()
+    storage.save(instance)
     return make_response(jsonify(instance.to_dict()), 201)
 
 
