@@ -1,7 +1,7 @@
-Gets the list of all reviews of book
+Gets the list of all recommended of book
 ---
 tags:
-  - Reviews
+  - Recommeded
 parameters:
   - name: book_id
     in: path

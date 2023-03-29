@@ -1,9 +1,9 @@
 Retrieves a Review
 ---
 tags:
-  - Reviews
+  - Recommended
 parameters:
-  - name: review_id
+  - name: recommended_id
     in: path
     type: string
     required: true

@@ -1,9 +1,9 @@
-    Updates the review info based on ID
+    Updates the recommended info based on ID
     ---
     tags:
-      - Reviews
+      - Recommended
     parameters:
-      - name: review_id
+      - name: recommended_id
         in: path
         type: string
         required: true

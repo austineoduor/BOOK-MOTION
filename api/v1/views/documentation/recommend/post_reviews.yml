@@ -1,7 +1,7 @@
-    Posts a new review
+    Posts a new recommend
     ---
     tags:
-      - Reviews
+      - Recommend
     parameters:
       - name: book_id
         in: path

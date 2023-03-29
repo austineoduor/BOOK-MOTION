@@ -13,7 +13,7 @@ storage = DBStorage()
 
 @app_views.route('/recommendend', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/books/get_books.yml', methods=['GET'])
+@swag_from('documentation/recommend/get_recommends.yml', methods=['GET'])
 def get_rec_books(book_id):
     """
     Retrieves the list of all Recommended Books
@@ -30,8 +30,8 @@ def get_rec_books(book_id):
 
 
 @app_views.route('/recommend/<recommend_id>', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/recommend/get_review.yml', methods=['GET'])
-def get_rec_book(recommend_id):
+@swag_from('documentation/recommend/get_recommend.yml', methods=['GET'])
+def all_rec_book(recommend_id):
     """
     Retrieves a Review object
     """
@@ -44,7 +44,7 @@ def get_rec_book(recommend_id):
 
 @app_views.route('/recommend/<recommend_id>', methods=['DELETE'],
                  strict_slashes=False)
-@swag_from('documentation/reviews/delete_reviews.yml', methods=['DELETE'])
+@swag_from('documentation/reviews/delete_recommend.yml', methods=['DELETE'])
 def delete_rec_book(recommend_id):
     """
     Deletes a Review Object
@@ -63,10 +63,10 @@ def delete_rec_book(recommend_id):
 
 @app_views.route('/books/<book_id>/recommend', methods=['POST'],
                  strict_slashes=False)
-@swag_from('documentation/reviews/post_reviews.yml', methods=['POST'])
+@swag_from('documentation/recommend/post_recommend.yml', methods=['POST'])
 def post_rec_book(book_id):
     """
-    Creates a Review
+    Creates a Recommended
     """
     book = storage.get('Book', book_id)
 
@@ -95,10 +95,10 @@ def post_rec_book(book_id):
 
 
 @app_views.route('/recommend/<recommend_id>', methods=['PUT'], strict_slashes=False)
-@swag_from('documentation/reviews/put_reviews.yml', methods=['PUT'])
+@swag_from('documentation/recommend/put_recommend.yml', methods=['PUT'])
 def put_rec_book(recommend_id):
     """
-    Updates a Review
+    Updates a Recommend
     """
     rec = storage.get(Recommended, recommend_id)
 
