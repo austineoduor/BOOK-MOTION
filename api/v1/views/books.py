@@ -128,9 +128,10 @@ def put_book(book_id):
     if not book:
         abort(404)
 
-    if book.category == category:
+    if book.category == category and book.title != title:
         for key, value in data.items():
-            print (key, value)
             setattr(book, key, value)
             storage.save(book)
+    else:
+        abort(409, description='title is the current')
     return make_response(jsonify(book.to_dict()), 200)

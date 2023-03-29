@@ -11,14 +11,15 @@ from flasgger.utils import swag_from
 
 storage = DBStorage()
 
-@app_views.route('/books/<book_id>/recommendend', methods=['GET'],
+@app_views.route('/recommendend', methods=['GET'],
                  strict_slashes=False)
 @swag_from('documentation/books/get_books.yml', methods=['GET'])
 def get_rec_books(book_id):
     """
     Retrieves the list of all Recommended Books
     """
-    book = storage.get(Book, book_id)
+    book = storage.get(Recommended)
+    print ('empty')
 
     if not book:
         abort(404)
@@ -29,7 +30,7 @@ def get_rec_books(book_id):
 
 
 @app_views.route('/recommend/<recommend_id>', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/reviews/get_review.yml', methods=['GET'])
+@swag_from('documentation/recommend/get_review.yml', methods=['GET'])
 def get_rec_book(recommend_id):
     """
     Retrieves a Review object
