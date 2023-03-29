@@ -38,12 +38,6 @@ def not_authorized(error) -> str:
     """
     return jsonify({"error": "Unauthorized"}), 401
 
-@app.errorhandler(409)
-def conflicted(error) -> str:
-    """ Not conflict handler
-    """
-    return jsonify({"conflict": "email exist with other user"}), 409
-
 @app.errorhandler(403)
 def page_forbidden(error) -> str:
     """ Forbidden handler

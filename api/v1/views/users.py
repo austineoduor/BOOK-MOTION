@@ -51,8 +51,10 @@ def delete_user(user_id):
     storage.delete(user)
     storage.save(None)
 
-    return make_response(jsonify({}), 200)
-
+    return make_response(
+            jsonify(
+                {'Deleted': user.first_name + ' ' + ' ' + user.last_name}
+                ), 200)
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/user/post_user.yml', methods=['POST'])
@@ -73,7 +75,7 @@ def post_user():
     if all_users:
         for users in all_users:
             if users.email == email:
-                return abort(409)
+                return abort(409, description='{"conflict": "email exists}')
     data = {}
     data['username'] = username
     data['email'] = email
