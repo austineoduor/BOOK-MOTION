@@ -3,7 +3,7 @@
     tags:
       - Recommended
     parameters:
-      - name: recommended_id
+      - name: recommend_id
         in: path
         type: string
         required: true

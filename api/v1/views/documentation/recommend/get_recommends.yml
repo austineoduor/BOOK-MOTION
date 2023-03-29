@@ -2,13 +2,7 @@ Gets the list of all recommended of book
 ---
 tags:
   - Recommeded
-parameters:
-  - name: book_id
-    in: path
-    type: string
-    required: true
-    description: the unique id of the book
-
+  
 responses:
   200:
     description: Successful request
