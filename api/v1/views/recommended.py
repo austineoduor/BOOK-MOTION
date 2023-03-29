@@ -18,9 +18,7 @@ def get_rec_books(book_id):
     """
     Retrieves the list of all Recommended Books
     """
-    book = storage.get(Recommended)
-    print ('empty')
-
+    book = storage.all(Recommended).values()
     if not book:
         abort(404)
 
@@ -35,7 +33,7 @@ def all_rec_book(recommend_id):
     """
     Retrieves a Review object
     """
-    recommend = storage.get(Recommended, recommend_id)
+    recommend = storage.get('Recommended', recommend_id)
     if not recommend:
         abort(404)
 
@@ -50,15 +48,15 @@ def delete_rec_book(recommend_id):
     Deletes a Review Object
     """
 
-    rec = storage.get(Recommended, recommend_id)
+    rec = storage.get('Recommended', recommend_id)
 
     if not rec:
         abort(404)
 
     storage.delete(rec)
-    storage.save()
+    storage.save(None)
 
-    return make_response(jsonify({}), 200)
+    return make_response(jsonify({'Deleted': book.id}), 200)
 
 
 @app_views.route('/books/<book_id>/recommend', methods=['POST'],
@@ -90,7 +88,7 @@ def post_rec_book(book_id):
 
     data['book_id'] = book_id
     instance = Recommended(**data)
-    instance.save()
+    storage.save(instance)
     return make_response(jsonify(instance.to_dict()), 201)
 
 
@@ -100,7 +98,7 @@ def put_rec_book(recommend_id):
     """
     Updates a Recommend
     """
-    rec = storage.get(Recommended, recommend_id)
+    rec = storage.get('Recommended', recommend_id)
 
     if not rec:
         abort(404)
