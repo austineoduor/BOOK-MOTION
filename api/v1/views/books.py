@@ -50,7 +50,10 @@ def delete_book(book_id):
     storage.delete(book)
     storage.save(None)
 
-    return make_response(jsonify({}), 200)
+    return make_response(
+            jsonify(
+                {'Deleted': book.title + ' ' + 'by' + ' ' + book.author}
+                ), 200)
 
 
 @app_views.route('/books', methods=['POST'], strict_slashes=False)
@@ -82,6 +85,13 @@ def post_book():
     else:
         data['published'] = published
 
+    db_books = list(storage.all(Book).values())
+    if db_books:
+        for book in db_books:
+            if book.title == title:
+                return abort(409,
+                        description='title already exists')
+
     instance = Book(**data)
     storage.save(instance)
     return make_response(jsonify(instance.to_dict()), 201)
@@ -94,19 +104,33 @@ def put_book(book_id):
     """
     Updates a book
     """
-    if not request.get_json():
-        abort(400, description="Not a JSON")
+    title = request.form.get('title')
+    published = request.form.get('published')
+    category = request.form.get('category')
 
-    ignore = ['id', 'created_at', 'updated_at', 'title']
+    data = {}
+    if not title and not isinstance(title, str):
+        abort(406,
+                description="Missing title or not a string")
+    else:
+        data['title'] = title
+    if not published and not isinstance(published, int):
+        abort(406,
+                description="Missing published year or not an integer")
+    else:
+        data['published'] = published
+    if not category and not isinstance(category, str):
+        abort(406,
+                description="Missing category")
 
     book = storage.get('Book', book_id)
 
     if not book:
         abort(404)
 
-    data = request.get_json()
-    for key, value in data.items():
-        if key not in ignore:
+    if book.category == category:
+        for key, value in data.items():
+            print (key, value)
             setattr(book, key, value)
-    storage.save(book)
+            storage.save(book)
     return make_response(jsonify(book.to_dict()), 200)

@@ -75,10 +75,10 @@ class DBStorage:
     def reload(self) -> None:
         """configuration
         """
-        Base.metadata.create_all(self.__engine)
-        sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Base.metadata.create_all(self._engine)
+        sec = sessionmaker(bind=self._engine, expire_on_commit=False)
         Session = scoped_session(sec)
-        self._session = Session()
+        self.__session = Session()
 
     def close(self) -> None:
         """ calls remove()
