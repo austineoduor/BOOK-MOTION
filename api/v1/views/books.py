@@ -27,7 +27,7 @@ def get_books():
 @swag_from('documentation/book/get_book.yml', methods=['GET'])
 def get_book(book_id):
     """ Retrieves a book """
-    book = storage.get(Book, book_id)
+    book = storage.get('Book', book_id)
     if not book:
         abort(404)
 
@@ -42,13 +42,13 @@ def delete_book(book_id):
     Deletes a book  Object
     """
 
-    book = storage.get(Book, book_id)
+    book = storage.get('Book', book_id)
 
     if not book:
         abort(404)
 
     storage.delete(book)
-    storage.save()
+    storage.save(None)
 
     return make_response(jsonify({}), 200)
 
@@ -83,7 +83,7 @@ def put_book(book_id):
 
     ignore = ['id', 'created_at', 'updated_at', 'title']
 
-    book = storage.get(Book, book_id)
+    book = storage.get('Book', book_id)
 
     if not book:
         abort(404)
@@ -92,5 +92,5 @@ def put_book(book_id):
     for key, value in data.items():
         if key not in ignore:
             setattr(book, key, value)
-    storage.save()
+    storage.save(book)
     return make_response(jsonify(book.to_dict()), 200)

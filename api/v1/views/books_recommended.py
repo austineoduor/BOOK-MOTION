@@ -14,7 +14,7 @@ storage = DBStorage()
 @app_views.route('/books/<book_id>/recommendend', methods=['GET'],
                  strict_slashes=False)
 @swag_from('documentation/books/get_books.yml', methods=['GET'])
-def get_books(book_id):
+def get_rec_books(book_id):
     """
     Retrieves the list of all Recommended Books
     """
@@ -67,7 +67,7 @@ def post_rec_book(book_id):
     """
     Creates a Review
     """
-    book = storage.get(Book, book_id)
+    book = storage.get('Book', book_id)
 
     if not book:
         abort(404)
