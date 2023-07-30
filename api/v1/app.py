@@ -29,20 +29,20 @@ def not_found(error) -> str:
       404:
         description: a resource was not found
     """
-    return make_response(jsonify({'error': "Not found"}), 404)
+    return make_response(jsonify({'error': "Not found"}), 404) # type: ignore
 
 
 @app.errorhandler(401)
 def not_authorized(error) -> str:
     """ Not authorized handler
     """
-    return jsonify({"error": "Unauthorized"}), 401
+    return jsonify({"error": "Unauthorized"}), 401 # type: ignore
 
 @app.errorhandler(403)
 def page_forbidden(error) -> str:
     """ Forbidden handler
     """
-    return jsonify({"error": "Forbidden"}), 403
+    return jsonify({"error": "Forbidden"}), 403 # type: ignore
     
 
 app.config['SWAGGER'] = {
@@ -61,4 +61,4 @@ if __name__ == "__main__":
         host = '0.0.0.0'
     if not port:
         port = '5000'
-    app.run(host=host, port=port, debug=True)
+    app.run(host=host, port=port, debug=True) # type: ignore

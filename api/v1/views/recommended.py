@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Reviews """
+""" objects that handle all default Flask API actions for Recommended """
 from models.book_recommended import Recommended
 from models.book import Book
 from models.user import User
@@ -11,23 +11,22 @@ from flasgger.utils import swag_from
 
 storage = DBStorage()
 
-@app_views.route('/recommendend', methods=['GET'],
-                 strict_slashes=False)
+@app_views.route('/recommended', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/recommend/get_recommends.yml', methods=['GET'])
-def get_rec_books(book_id):
+def get_rec_books():
     """
     Retrieves the list of all Recommended Books
     """
     book = storage.all(Recommended).values()
-    if not book:
-        abort(404)
+    #if not book:
+     #   abort(404)
 
-    recommend = [recommend.to_dict() for recommend in book.recommended]
+    recommend = [recommend.to_dict() for recommend in book]
 
     return jsonify(recommend)
 
 
-@app_views.route('/recommend/<recommend_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/recommended/<recommend_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/recommend/get_recommend.yml', methods=['GET'])
 def all_rec_book(recommend_id):
     """
@@ -40,7 +39,7 @@ def all_rec_book(recommend_id):
     return jsonify(recommend.to_dict())
 
 
-@app_views.route('/recommend/<recommend_id>', methods=['DELETE'],
+@app_views.route('/recommended/<recommend_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/reviews/delete_recommend.yml', methods=['DELETE'])
 def delete_rec_book(recommend_id):
@@ -56,7 +55,7 @@ def delete_rec_book(recommend_id):
     storage.delete(rec)
     storage.save(None)
 
-    return make_response(jsonify({'Deleted': book.id}), 200)
+    return make_response(jsonify({'Deleted': rec.id}), 200)
 
 
 @app_views.route('/books/<book_id>/recommend', methods=['POST'],
